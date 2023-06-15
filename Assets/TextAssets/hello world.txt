@@ -1,0 +1,1 @@
+___("Hello world")/print("Hello world");write("Hello world");show("Hello world");display("Hello world")|print(__Hello world__)/print("Hello world");print(#Hello world#);print($Hello world$);print('Hello world')
