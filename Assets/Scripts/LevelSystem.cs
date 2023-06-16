@@ -15,7 +15,7 @@ public class LevelSystem : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(LevelFlags["TutorialMap"]);
+        
     }
 
     public static void SetLevelStatus(string levelName) => LevelFlags[levelName] = true;

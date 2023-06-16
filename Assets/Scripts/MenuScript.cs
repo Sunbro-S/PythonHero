@@ -27,7 +27,7 @@ public class MenuScript : MonoBehaviour
 
     public void ButExit()
     {
-        
+        Application.Quit();
     }
     
     public void ButBack()
@@ -45,7 +45,7 @@ public class MenuScript : MonoBehaviour
     public void ButLevel1() 
     {
         CurrentScene = "Level1";
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(CurrentScene);
     }
     
     public void ButLevel2() 

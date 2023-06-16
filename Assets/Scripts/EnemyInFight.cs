@@ -9,14 +9,14 @@ public class EnemyInFight : MonoBehaviour
 {
         public int maxHealth = 100;
         private int currentHealth;
-        public int EnemiesLeft;
-        private static int enemiesCounter;
-        public static bool enemiesIsDead = false;
+        public static int enemiesCounter;
+
 
         private void Awake()
         {
             currentHealth = maxHealth;
-            enemiesCounter = EnemiesLeft;
+            enemiesCounter = 0;
+
         }
         
 
@@ -24,11 +24,10 @@ public class EnemyInFight : MonoBehaviour
         {
             if (IsDead())
             {
-                enemiesCounter--;
+                enemiesCounter++;
                 Destroy(gameObject);
             }
-
-            if (enemiesCounter <= 0) enemiesIsDead = true;
+            
         }
 
 

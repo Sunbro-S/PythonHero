@@ -6,10 +6,9 @@ using UnityEngine;
 public class NPCcript : MonoBehaviour
 {
     public Canvas canvas;
-    public TMPro.TextMeshProUGUI firstText;
-    public TMPro.TextMeshProUGUI secondText;
+    public List<TMPro.TextMeshProUGUI> listText;
 
-    private bool isFirstTextDisplayed = true;
+    private int currentIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +19,16 @@ public class NPCcript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Проверьте, нажата ли клавиша Enter
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            // Проверьте, если первый текст уже отображается
-            if (isFirstTextDisplayed)
+            if (currentIndex < listText.Count - 1)
             {
-                // Скройте первый текст и отобразите второй текст
-                firstText.gameObject.SetActive(false);
-                secondText.gameObject.SetActive(true);
-                isFirstTextDisplayed = false;
+                listText[currentIndex].gameObject.SetActive(false);
+                currentIndex++;
+                listText[currentIndex].gameObject.SetActive(true);
             }
             else
             {
-                // Если уже отображается второй текст, скройте канвас
                 canvas.gameObject.SetActive(false);
             }
         }
@@ -43,11 +38,13 @@ public class NPCcript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            // При соприкосновении с игроком, отобразите канвас и первый текст
             canvas.gameObject.SetActive(true);
-            firstText.gameObject.SetActive(true);
-            secondText.gameObject.SetActive(false);
-            isFirstTextDisplayed = true;
+            currentIndex = 0;
+            foreach (var text in listText)
+            {
+                text.gameObject.SetActive(false);
+            }
+            listText[currentIndex].gameObject.SetActive(true);
         }
     }
 }
